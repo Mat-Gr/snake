@@ -30,13 +30,18 @@ def main():
     FPS = 15
 
     while True:
-        fontObj = pygame.font.Font('freesansbold.ttf', 16)
-        textSurfaceObj = fontObj.render(score(snakeBody), True, WHITE)
-        textRectObj = textSurfaceObj.get_rect()
-        textRectObj.topleft = (10, 10)
+        scoreFontObj = pygame.font.Font('freesansbold.ttf', 16)
+        scoreTextSurfaceObj = scoreFontObj.render(score(snakeBody), True, WHITE)
+        scoreTextRectObj = scoreTextSurfaceObj.get_rect()
+        scoreTextRectObj.topleft = (10, 10)
+
+        GOfontObj = pygame.font.Font('freesansbold.ttf', 35)
+        GOtextSurfaceObj = GOfontObj.render('GAME OVER', True, WHITE)
+        GOtextRectObj = GOtextSurfaceObj.get_rect()
+        GOtextRectObj.center = (WINWIDTH/2, WINHEIGHT/2)
 
         DISPLAYSURF.fill(BGCOLOR)
-        DISPLAYSURF.blit(textSurfaceObj, textRectObj)
+        DISPLAYSURF.blit(scoreTextSurfaceObj, scoreTextRectObj)
 
         # food
         if food == False:
@@ -77,6 +82,9 @@ def main():
 
         # death
         if (cords[0], cords[1]) in snakeBody:
+            DISPLAYSURF.blit(GOtextSurfaceObj, GOtextRectObj)
+            pygame.display.update()
+            pygame.time.wait(3000)
             snakeBody = [prevPos]
             FPS = 15
 
