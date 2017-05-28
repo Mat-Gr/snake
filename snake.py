@@ -1,3 +1,7 @@
+# Snake Game
+# By Mateusz Grochala
+# github.com/Mat-Gr/snake
+
 import random, pygame, sys
 from pygame.locals import *
 
