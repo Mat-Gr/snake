@@ -19,10 +19,10 @@ def main():
     global FPSCLOCK, DISPLAYSURF
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
-    DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT), 0, 32)
+    DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
     pygame.display.set_caption('Snake')
 
-    cords = [380, 280]
+    cords = [WINWIDTH/2, WINHEIGHT/2]
     prevPos = (cords[0], cords[1])
     snakeBody = [prevPos]
     direction = 'up'
@@ -88,7 +88,7 @@ def main():
         if (cords[0], cords[1]) in snakeBody:
             DISPLAYSURF.blit(GOtextSurfaceObj, GOtextRectObj)
             pygame.display.update()
-            pygame.time.wait(3000)
+            pygame.time.wait(2000)
             snakeBody = [prevPos]
             FPS = 15
 
